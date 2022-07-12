@@ -1,0 +1,62 @@
+# Ripio Backend
+
+## Dependencies
+
+Only run in Linux:
+
+- Python 3
+
+## Initial Steps
+
+- Clone repo
+- Create (virtualenv env --python=python3) and activate (source env/bin/activate) virtual env
+- Install requeriment (pip): pip install -r requirements.txt
+- Run migrations `python manage.py migrate`
+
+## Database
+- Se pushea la fixture db.json con dos usuarios de prueba y algunas transacciones, wallets y monedas
+- User: admin Password: admin
+- User: test Password: rafam12345
+
+## Admin
+
+- Ya se crea un 
+
+
+Run the command:
+`(env) $ python manage.py collectstatic`
+Notes: https://docs.djangoproject.com/en/2.2/howto/static-files/deployment/#serving-static-files-from-a-dedicated-server
+
+
+## Translates
+Run the command:
+`(env) $ python manage.py makemessages --all -i env`
+
+
+## Run Server API
+
+(env) $ python manage.py runserver 0.0.0.0:8000
+
+## Run tests without coverage
+
+`(env) $ python manage.py test`
+
+## Docker
+
+`docker build -t ripio-backend .`
+`docker run -dp 8000:8000  --name ripio-backend ripio-backend `
+
+###Detener container y borrar
+
+`docker stop ripio-backend`
+`docker rm ripio-backend`
+
+# Documentation
+
+## Swagger
+
+Swagger are available in /swagger only for Debug=True.
+For access to definition of swagger you need to get the url: http://localhost:8001/swagger.json with credentials. This is with the header Authorization.
+In http://localhost:8001/swagger.json or http://localhost:8001/swagger/?format=openapi you can download the json and next open in https://editor.swagger.io/
+Notes: https://drf-yasg.readthedocs.io/en/latest/readme.html, https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#infoObject
+In the root folder the file "swagger-file" with last json.
